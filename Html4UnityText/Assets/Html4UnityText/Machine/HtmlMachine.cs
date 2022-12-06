@@ -2,6 +2,9 @@
 
 namespace Html4UnityText
 {
+    /// <summary>
+    /// 该状态机用于对一段Html文本进行分析（区分出标签，文本）
+    /// </summary>
     public class HtmlMachine
     {
         private HtmlStatus _currentStatus;

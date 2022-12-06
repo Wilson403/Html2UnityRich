@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Html4UnityText
+﻿namespace Html4UnityText
 {
     public class HtmlEndTagStatus : HtmlStatus
     {

@@ -44,7 +44,7 @@ namespace Html4UnityText
         /// <param name="str"></param>
         public void AddSingleNode (string str)
         {
-
+            _parentHtmlNodeStack.Peek ().childNodeList.Add (new HtmlTagNode (tagStartName: str , tagEndName: str));
         }
 
         /// <summary>

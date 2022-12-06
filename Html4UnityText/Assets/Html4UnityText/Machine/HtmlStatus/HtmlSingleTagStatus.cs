@@ -14,6 +14,7 @@
             {
                 case '>':
                     machine.htmlTagAnalyer.AddSingleNode (machine.MergeChar ());
+                    machine.EnterStats (machine.htmlDefaultStatus);
                     break;
             }
         }
