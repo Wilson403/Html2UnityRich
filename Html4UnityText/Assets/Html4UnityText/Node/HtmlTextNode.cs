@@ -8,5 +8,15 @@
         {
             this.text = text;
         }
+
+        public override HtmlNode ToPropNode ()
+        {
+            return this;
+        }
+
+        public override HtmlNode ToUnityRichNode ()
+        {
+            return this;
+        }
     }
 }

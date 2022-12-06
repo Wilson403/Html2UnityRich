@@ -19,6 +19,14 @@ namespace Html4UnityText
         public readonly TagPropValStartStatus tagPropValStartStatus;
         public readonly TagPropValEndStatus tagPropValEndStatus;
 
+        public TagPropStatus CurrentStatus
+        {
+            get
+            {
+                return _currentStatus;
+            }
+        }
+
         public TagPropMachine ()
         {
             tagPropDefaultStatus = new TagPropDefaultStatus (this);
@@ -71,14 +79,14 @@ namespace Html4UnityText
         public string tagName;
         public string propKey;
         public string propVal;
-        public readonly List<KeyValuePair<string , string>> propKvList = new List<KeyValuePair<string , string>> ();
+        public readonly Dictionary<string , string> propKV = new Dictionary<string , string> ();
 
         /// <summary>
         /// 保存属性键值对
         /// </summary>
         public void SavePropKV ()
         {
-            propKvList.Add (new KeyValuePair<string , string> (key: propKey , value: propVal));
+            propKV.Add (key: propKey , value: propVal);
         }
     }
 }
