@@ -1,4 +1,6 @@
-﻿namespace Html4UnityText
+﻿using System.Collections.Generic;
+
+namespace Html4UnityText
 {
     public class HtmlTextNode : HtmlNode
     {
@@ -17,6 +19,11 @@
         public override HtmlNode ToUnityRichNode ()
         {
             return this;
+        }
+
+        public override List<HtmlNode> GetChilds ()
+        {
+            return new List<HtmlNode> (0);
         }
     }
 }

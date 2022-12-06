@@ -14,7 +14,7 @@ namespace Html4UnityText
             switch ( content )
             {
                 case '"':
-                    machine.EnterStats (machine.tagPropValEndStatus);
+                    machine.EnterStats (machine.tagPropValStartStatus);
                     break;
 
                 default:

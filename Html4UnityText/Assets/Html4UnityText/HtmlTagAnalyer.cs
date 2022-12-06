@@ -9,7 +9,7 @@ namespace Html4UnityText
 
         public HtmlTagAnalyer ()
         {
-            root = new HtmlTagNode (tagStartName: "" , tagEndName: "" , propKV: new Dictionary<string , string> (0));
+            root = new HtmlTagNode (tagStartName: "" , tagEndName: "");
             _parentHtmlNodeStack = new Stack<HtmlNode> ();
             _parentHtmlNodeStack.Push (root);
         }
@@ -24,7 +24,7 @@ namespace Html4UnityText
             {
                 return;
             }
-            _parentHtmlNodeStack.Peek ().childNodeList.Add (new HtmlTextNode (text));
+            _parentHtmlNodeStack.Peek ().GetChilds ().Add (new HtmlTextNode (text));
         }
 
         /// <summary>
@@ -33,8 +33,8 @@ namespace Html4UnityText
         /// <param name="str"></param>
         public void AddTagNode (string str)
         {
-            var tagNode = new HtmlTagNode (tagStartName: str , tagEndName: str , propKV: new Dictionary<string , string> (0));
-            _parentHtmlNodeStack.Peek ().childNodeList.Add (tagNode);
+            var tagNode = new HtmlTagNode (tagStartName: str , tagEndName: str);
+            _parentHtmlNodeStack.Peek ().GetChilds ().Add (tagNode);
             _parentHtmlNodeStack.Push (tagNode); //作为下一个节点的父节点
         }
 
@@ -44,7 +44,7 @@ namespace Html4UnityText
         /// <param name="str"></param>
         public void AddSingleNode (string str)
         {
-            _parentHtmlNodeStack.Peek ().childNodeList.Add (new HtmlTagNode (tagStartName: str , tagEndName: str , propKV: new Dictionary<string , string> (0)));
+            _parentHtmlNodeStack.Peek ().GetChilds ().Add (new HtmlTagNode (tagStartName: str , tagEndName: str));
         }
 
         /// <summary>

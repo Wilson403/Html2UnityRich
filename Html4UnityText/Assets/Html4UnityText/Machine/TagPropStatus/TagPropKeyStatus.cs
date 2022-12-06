@@ -14,7 +14,7 @@
                 //该属性有值，先缓存属性名称，后续交给其他状态处理
                 case '=':
                     machine.propKey = machine.MergeChar ();
-                    machine.EnterStats (machine.tagPropValStartStatus);
+                    machine.EnterStats (machine.tagPropValStatus);
                     break;
 
                 //该属性名称没有值，直接缓存

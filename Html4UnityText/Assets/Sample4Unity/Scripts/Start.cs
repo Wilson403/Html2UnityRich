@@ -5,6 +5,8 @@ public class Start : MonoBehaviour
 {
     private void Awake ()
     {
-        Debug.LogWarning (Html4UnityTextMgr.CreateHtmlRootNode ("<p>abc<h1>d<h2>e</h1></h2>fg</p>"));
+        var root = Html4UnityTextMgr.CreateHtmlRootNode ("<h1 class=\"ql-align-center\">123<p><font size=\"1\"><strong class=\"ql-size-large\" style=\"color: rgb(102, 185, 102);\"> 露娜物語新服：<h5>奈拉</h5>城鎮開啟啦！</strong></font></p></h1>");
+        Debug.LogWarning (root);
+        Debug.LogWarning (root.ToPropNode ());
     }
 }

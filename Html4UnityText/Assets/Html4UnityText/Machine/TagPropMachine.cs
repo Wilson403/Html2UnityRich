@@ -37,6 +37,7 @@ namespace Html4UnityText
             tagPropValStatus = new TagPropValStatus (this);
             tagPropValStartStatus = new TagPropValStartStatus (this);
             tagPropValEndStatus = new TagPropValEndStatus (this);
+            EnterStats (tagPropDefaultStatus);
         }
 
         /// <summary>

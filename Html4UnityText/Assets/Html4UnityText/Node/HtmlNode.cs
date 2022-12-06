@@ -6,8 +6,6 @@ namespace Html4UnityText
 {
     public abstract class HtmlNode
     {
-        public readonly List<HtmlNode> childNodeList = new List<HtmlNode> (0);
-
         /// <summary>
         /// 转化为支持prop的节点
         /// </summary>
@@ -19,6 +17,12 @@ namespace Html4UnityText
         /// </summary>
         /// <returns></returns>
         public abstract HtmlNode ToUnityRichNode ();
+
+        /// <summary>
+        /// 获取子节点列表
+        /// </summary>
+        /// <returns></returns>
+        public abstract List<HtmlNode> GetChilds ();
 
         public override string ToString ()
         {
