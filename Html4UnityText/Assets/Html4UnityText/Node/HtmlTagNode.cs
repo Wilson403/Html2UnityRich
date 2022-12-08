@@ -85,6 +85,10 @@ namespace Html4UnityText
                     propsDict [HtmlTagName.UNITY_RICH_TEXT_TAG_I] = "";
                     break;
 
+                case HtmlTagName.HTML_TAG_STRONG:
+                    propsDict [HtmlTagName.UNITY_RICH_TEXT_TAG_B] = "";
+                    break;
+
                 default:
                     Debug.LogError ($"Not support html tag name [{tagStartName}]");
                     break;

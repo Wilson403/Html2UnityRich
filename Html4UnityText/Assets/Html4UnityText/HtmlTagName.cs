@@ -5,6 +5,7 @@
         //以下为Html的标签名称
         public const string HTML_TAG_P = "p";
         public const string HTML_TAG_EM = "em";
+        public const string HTML_TAG_STRONG = "strong";
 
         public const string HTML_STYLE = "style";
         public const string HTML_CLASS = "class";
