@@ -24,6 +24,12 @@ namespace Html4UnityText
         /// <returns></returns>
         public abstract List<HtmlNode> GetChilds ();
 
+        /// <summary>
+        ///转化为Unity富文本
+        /// </summary>
+        /// <returns></returns>
+        public abstract string ToUnityRichText ();
+
         public override string ToString ()
         {
             StringBuilder sb = new StringBuilder ();

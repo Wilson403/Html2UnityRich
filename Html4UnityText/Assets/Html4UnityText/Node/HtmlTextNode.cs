@@ -25,5 +25,10 @@ namespace Html4UnityText
         {
             return new List<HtmlNode> (0);
         }
+
+        public override string ToUnityRichText ()
+        {
+            return text;
+        }
     }
 }
