@@ -9,7 +9,7 @@ namespace Html4UnityText
 
         public HtmlTagAnalyer ()
         {
-            root = new HtmlTagNode (tagStartName: "" , tagEndName: "");
+            root = new HtmlTagNode (tagStartName: "" , tagEndName: "" , depth: 0);
             _parentHtmlNodeStack = new Stack<HtmlNode> ();
             _parentHtmlNodeStack.Push (root);
         }
@@ -24,7 +24,7 @@ namespace Html4UnityText
             {
                 return;
             }
-            _parentHtmlNodeStack.Peek ().GetChilds ().Add (new HtmlTextNode (text));
+            _parentHtmlNodeStack.Peek ().GetChilds ().Add (new HtmlTextNode (text , _parentHtmlNodeStack.Peek ().Depth + 1));
         }
 
         /// <summary>
@@ -33,7 +33,14 @@ namespace Html4UnityText
         /// <param name="str"></param>
         public void AddTagNode (string str)
         {
-            var tagNode = new HtmlTagNode (tagStartName: str , tagEndName: str);
+            //如果是单标签走单标签的逻辑
+            if ( Html4UnityTextMgr.IsSingleTag (str) )
+            {
+                AddSingleNode (str);
+                return;
+            }
+
+            var tagNode = new HtmlTagNode (tagStartName: str , tagEndName: str , depth: _parentHtmlNodeStack.Peek ().Depth + 1);
             _parentHtmlNodeStack.Peek ().GetChilds ().Add (tagNode);
             _parentHtmlNodeStack.Push (tagNode); //作为下一个节点的父节点
         }
@@ -44,7 +51,7 @@ namespace Html4UnityText
         /// <param name="str"></param>
         public void AddSingleNode (string str)
         {
-            _parentHtmlNodeStack.Peek ().GetChilds ().Add (new HtmlTagNode (tagStartName: str , tagEndName: str));
+            _parentHtmlNodeStack.Peek ().GetChilds ().Add (new HtmlTagNode (tagStartName: str , tagEndName: str , depth: _parentHtmlNodeStack.Peek ().Depth + 1));
         }
 
         /// <summary>

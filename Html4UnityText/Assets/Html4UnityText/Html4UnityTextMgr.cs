@@ -23,5 +23,15 @@
             machine.CurrentStatus.EndApend ();
             return machine.htmlTagAnalyer.root;
         }
+
+        /// <summary>
+        /// 是否为单标签
+        /// </summary>
+        /// <param name="tagStartName"></param>
+        /// <returns></returns>
+        public static bool IsSingleTag (string tagStartName)
+        {
+            return tagStartName == HtmlTagName.HTML_TAG_BR;
+        }
     }
 }

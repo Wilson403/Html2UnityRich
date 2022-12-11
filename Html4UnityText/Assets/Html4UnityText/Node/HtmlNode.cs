@@ -6,6 +6,30 @@ namespace Html4UnityText
 {
     public abstract class HtmlNode
     {
+        protected int depth;
+        /// <summary>
+        /// 节点深度
+        /// </summary>
+        public int Depth 
+        {
+            get 
+            {
+                return depth;
+            }
+        }
+
+        /// <summary>
+        /// 获取属性数据
+        /// </summary>
+        /// <returns></returns>
+        public abstract Dictionary<string , string> GetProp ();
+
+        /// <summary>
+        /// 获取子节点列表
+        /// </summary>
+        /// <returns></returns>
+        public abstract List<HtmlNode> GetChilds ();
+
         /// <summary>
         /// 转化为支持prop的节点
         /// </summary>
@@ -19,16 +43,16 @@ namespace Html4UnityText
         public abstract HtmlNode ToUnityRichNode ();
 
         /// <summary>
-        /// 获取子节点列表
+        ///转化为UGUI富文本
         /// </summary>
         /// <returns></returns>
-        public abstract List<HtmlNode> GetChilds ();
+        public abstract string ToUguiRichText ();
 
         /// <summary>
-        ///转化为Unity富文本
+        ///转化为TextPro富文本
         /// </summary>
         /// <returns></returns>
-        public abstract string ToUnityRichText ();
+        public abstract string ToTextProRichText ();
 
         public override string ToString ()
         {
