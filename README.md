@@ -40,7 +40,7 @@ textMeshPro.text = Html2UnityRichMgr.CreateHtmlRootNode (content).ToPropNode ().
 UGUI(Text)由于不带对齐的富文本的标签，所以实现多了一些步骤，具体实现见Start.cs
 
 ## 适用的场景
-我自己的需求是用于游戏的公告，游戏公告一般是运营人员写的，他们更多熟悉Html，而不了解Unity的富文本，所以写了这个库来进行转换
+我自己的需求是用于游戏的公告，游戏公告一般是运营人员编写发出的，他们更多熟悉Html，而不了解Unity的富文本，所以写了这个库来进行转换
 
 ## 后续更新计划
 - 支持图文混排
