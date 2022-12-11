@@ -40,5 +40,4 @@ textMeshPro.text = Html2UnityRichMgr.CreateHtmlRootNode (content).ToPropNode ().
 UGUI(Text)由于不带对齐的富文本的标签，所以实现多了一些步骤，具体实现见Start.cs
 
 ## 演示效果
-![image](https://user-images.githubusercontent.com/38308449/206893696-16c5fd8f-6b64-4a1f-94c1-d9a47cb51440.png)
-
+![image](https://user-images.githubusercontent.com/38308449/206893926-f05ac168-0b64-4d25-bc3e-c2e944f91464.png)
