@@ -14,6 +14,7 @@ namespace Html2UnityRich
         public readonly HtmlDefaultStatus htmlDefaultStatus;
         public readonly HtmlStartOrEndStatus htmlStartOrEndStatus;
         public readonly HtmlStartTagStatus htmlStartTagStatus;
+        public readonly HtmlStartTagWriteValueStatus htmlStartTagWriteValueStatus;
         public readonly HtmlEndTagStatus htmlEndTagStatus;
         public readonly HtmlSingleTagStatus htmlSingleTagStatus;
 
@@ -33,6 +34,7 @@ namespace Html2UnityRich
             htmlStartTagStatus = new HtmlStartTagStatus (this);
             htmlEndTagStatus = new HtmlEndTagStatus (this);
             htmlSingleTagStatus = new HtmlSingleTagStatus (this);
+            htmlStartTagWriteValueStatus = new HtmlStartTagWriteValueStatus (this);
             EnterStats (htmlDefaultStatus);
         }
 

@@ -22,6 +22,11 @@
                     machine.htmlTagAnalyer.AddTagNode (machine.MergeChar ());
                     machine.EnterStats (machine.htmlDefaultStatus);
                     break;
+
+                //起始标签中遇到"，说明正在写入值，走赋值状态处理
+                case '"':
+                    machine.EnterStats (machine.htmlStartTagWriteValueStatus);
+                    break;
             }
         }
     }
