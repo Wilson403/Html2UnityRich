@@ -99,6 +99,7 @@ namespace Html2UnityRich
                     propsDict [HtmlTagName.UNITY_RICH_TEXT_TAG_B] = "";
                     break;
 
+                case HtmlTagName.HTML_TAG_A:
                 case HtmlTagName.HTML_TAG_SPAN:
                 case "":
                 case null:
@@ -206,6 +207,12 @@ namespace Html2UnityRich
                 }
             }
 
+            //对HRFT换算
+            if ( propKV.ContainsKey (HtmlTagName.HTML_HREF) )
+            {
+                propsDict [HtmlTagName.HTML_HREF] = propKV [HtmlTagName.HTML_HREF];
+            }
+
             List<HtmlNode> newChilds = new List<HtmlNode> ();
             for ( int i = 0 ; i < childs.Count ; i++ )
             {
@@ -309,6 +316,10 @@ namespace Html2UnityRich
 
                     case HtmlTagName.HTML_CLASS_ALIGN_CENTER:
                         result = $"<{HtmlTagName.TEXT_PRO_RICH_TEXT_TAG_ALIGN}=center>{result}</{HtmlTagName.TEXT_PRO_RICH_TEXT_TAG_ALIGN}>";
+                        break;
+
+                    case HtmlTagName.HTML_HREF:
+                        result = $"<color=blue><u><link={item.Value}>{result}</link></u></color>";
                         break;
 
                     default:

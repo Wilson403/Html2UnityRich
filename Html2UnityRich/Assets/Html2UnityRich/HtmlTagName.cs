@@ -5,6 +5,7 @@ namespace Html2UnityRich
     public class HtmlTagName
     {
         //以下为Html的标签名称
+        public const string HTML_TAG_A = "a";
         public const string HTML_TAG_P = "p";
         public const string HTML_TAG_EM = "em";
         public const string HTML_TAG_BR = "br";
@@ -12,6 +13,7 @@ namespace Html2UnityRich
         public const string HTML_TAG_SPAN = "span";
         public const string HTML_STYLE = "style";
         public const string HTML_CLASS = "class";
+        public const string HTML_HREF = "href";
         public const string HTML_CLASS_ALIGN_LEFT = "ql-align-left";
         public const string HTML_CLASS_ALIGN_CENTER = "ql-align-center";
         public const string HTML_CLASS_ALIGN_RIGHT = "ql-align-right";
