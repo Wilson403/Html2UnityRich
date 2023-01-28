@@ -44,7 +44,7 @@ UGUI(Text)由于不带对齐的富文本的标签，所以实现多了一些步�
 
 ## 后续更新计划
 - 支持图文混排
-- 支持Html超链接标签
+- <s>支持Html超链接标签（已实现）</s>
 
 ## 演示效果
 ![image](https://user-images.githubusercontent.com/38308449/206893926-f05ac168-0b64-4d25-bc3e-c2e944f91464.png)
