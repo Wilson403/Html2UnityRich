@@ -258,6 +258,10 @@ namespace Html2UnityRich
                         result = $"{item.Value}{result}";
                         break;
 
+                    case HtmlTagName.HTML_HREF:
+                        result = $"<{HtmlTagName.HTML_TAG_A} {HtmlTagName.HTML_HREF}=\"{item.Value}\"><color=blue>{result}</color></{HtmlTagName.HTML_TAG_A}>";
+                        break;
+
                     case HtmlTagName.HTML_CLASS_ALIGN_LEFT:
                     case HtmlTagName.HTML_CLASS_ALIGN_RIGHT:
                     case HtmlTagName.HTML_CLASS_ALIGN_CENTER:

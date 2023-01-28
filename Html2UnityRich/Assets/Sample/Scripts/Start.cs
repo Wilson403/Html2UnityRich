@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Start : MonoBehaviour
 {
-    public Text preTextUGUI;
+    public LinkText4UGUI preTextUGUI;
     public TextMeshProUGUI textMeshPro;
     public Button btnShowUGUIText;
     public Button btnShowTextMeshPro;
@@ -25,10 +25,10 @@ public class Start : MonoBehaviour
         List<HtmlNode> htmlTagNodes = rootNode.GetChilds ();
         for ( int i = 0 ; i < htmlTagNodes.Count ; i++ )
         {
-            var textItem = GameObject.Instantiate<Text> (preTextUGUI , preTextUGUI.transform.parent);
+            LinkText4UGUI textItem = GameObject.Instantiate<LinkText4UGUI> (preTextUGUI , preTextUGUI.transform.parent);
             textItem.text = htmlTagNodes [i].ToUguiRichText ();
             textItem.gameObject.SetActive (true);
-
+           
             if ( htmlTagNodes [i].GetProp ().ContainsKey (HtmlTagName.HTML_CLASS_ALIGN_LEFT) )
             {
                 textItem.alignment = TextAnchor.MiddleLeft;

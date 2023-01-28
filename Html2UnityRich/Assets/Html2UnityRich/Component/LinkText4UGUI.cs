@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -23,8 +21,6 @@ public class LinkText4UGUI : Text, IPointerClickHandler
         public readonly List<Rect> boxes = new List<Rect> ();
     }
 
-    public event Action<string> evt;
-
     /// <summary>
     /// 解析完最终的文本
     /// </summary>
@@ -41,42 +37,9 @@ public class LinkText4UGUI : Text, IPointerClickHandler
     protected static readonly StringBuilder s_TextBuilder = new StringBuilder ();
 
     /// <summary>
-    /// 超链接色号  只能统一 默认蓝色
-    /// </summary>
-    public string richColorString = "blue";
-
-    [Serializable]
-    public class HrefClickEvent : UnityEvent<string> { }
-
-    [SerializeField]
-    private HrefClickEvent m_OnHrefClick = new HrefClickEvent ();
-
-    /// <summary>
-    /// 超链接点击事件
-    /// </summary>
-    public HrefClickEvent onHrefClick
-    {
-        get { return m_OnHrefClick; }
-        set { m_OnHrefClick = value; }
-    }
-
-
-    /// <summary>
     /// 超链接正则
     /// </summary>
     private static readonly Regex s_HrefRegex = new Regex (@"<a href=([^>\n\s]+)>(.*?)(</a>)" , RegexOptions.Singleline);
-
-    protected override void OnEnable ()
-    {
-        base.OnEnable ();
-        onHrefClick.AddListener (OnHyperlinkTextInfo);
-    }
-
-    protected override void OnDisable ()
-    {
-        base.OnDisable ();
-        onHrefClick.RemoveListener (OnHyperlinkTextInfo);
-    }
 
     public override void SetVerticesDirty ()
     {
@@ -140,8 +103,6 @@ public class LinkText4UGUI : Text, IPointerClickHandler
         foreach ( Match match in s_HrefRegex.Matches (outputText) )
         {
             s_TextBuilder.Append (outputText.Substring (indexText , match.Index - indexText));
-            s_TextBuilder.Append ($"<color={richColorString}>");  // 超链接颜色
-
             var group = match.Groups [1];
             var hrefInfo = new HyperlinkInfo
             {
@@ -152,7 +113,6 @@ public class LinkText4UGUI : Text, IPointerClickHandler
             m_HrefInfos.Add (hrefInfo);
 
             s_TextBuilder.Append (match.Groups [2].Value);
-            s_TextBuilder.Append ("</color>");
             indexText = match.Index + match.Length;
         }
         s_TextBuilder.Append (outputText.Substring (indexText , outputText.Length - indexText));
@@ -165,8 +125,7 @@ public class LinkText4UGUI : Text, IPointerClickHandler
     /// <param name="eventData"></param>
     public void OnPointerClick (PointerEventData eventData)
     {
-        RectTransformUtility.ScreenPointToLocalPointInRectangle (rectTransform , eventData.position , eventData.pressEventCamera , out var lp);
-
+        RectTransformUtility.ScreenPointToLocalPointInRectangle (rectTransform , eventData.position , eventData.pressEventCamera , out Vector2 lp);
         for ( int i1 = 0 ; i1 < m_HrefInfos.Count ; i1++ )
         {
             HyperlinkInfo hrefInfo = m_HrefInfos [i1];
@@ -175,29 +134,10 @@ public class LinkText4UGUI : Text, IPointerClickHandler
             {
                 if ( boxes [i].Contains (lp) )
                 {
-                    m_OnHrefClick.Invoke (hrefInfo.name);
+                    Application.OpenURL (hrefInfo.name);
                     return;
                 }
             }
         }
-    }
-
-    /// <summary>
-    /// 当前点击超链接回调
-    /// </summary>
-    /// <param name="info">回调信息</param>
-    private void OnHyperlinkTextInfo (string info)
-    {
-        evt?.Invoke (info);
-    }
-
-    public void ClearAction ()
-    {
-        evt = null;
-    }
-
-    public void SetHyperTextColor (string color)
-    {
-        richColorString = color;
     }
 }
