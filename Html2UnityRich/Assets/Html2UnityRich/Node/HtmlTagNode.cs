@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -193,10 +192,10 @@ namespace Html2UnityRich
                                     break;
                                 }
 
-                                var r = Convert.ToString (int.Parse (match [0].Value) , 16).ToUpper ();
-                                var g = Convert.ToString (int.Parse (match [1].Value) , 16).ToUpper ();
-                                var b = Convert.ToString (int.Parse (match [2].Value) , 16).ToUpper ();
-                                propsDict [HtmlTagName.UNITY_RICH_TEXT_TAG_COLOR] = $"#{r}{g}{b}";
+                                int r = int.Parse (match [0].Value);
+                                int g = int.Parse (match [1].Value);
+                                int b = int.Parse (match [2].Value);
+                                propsDict [HtmlTagName.UNITY_RICH_TEXT_TAG_COLOR] = string.Format ("#{0:X2}{1:X2}{2:X2}" , r , g , b);
                                 break;
                             };
 
