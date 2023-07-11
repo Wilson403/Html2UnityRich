@@ -49,7 +49,10 @@ UGUI(Text)由于不带对齐的富文本的标签，所以实现多了一些步�
 ## 演示效果
 ![image](https://user-images.githubusercontent.com/38308449/206893926-f05ac168-0b64-4d25-bc3e-c2e944f91464.png)
 
-## 推荐项目
+## 致谢
+- [forestluch](https://github.com/forestluch)：发现色码转化异常问题，该问题已修复
+
+## 友情链接
   - [JEngine](https://github.com/JasonXuDeveloper/JEngine) - The solution that allows unity games update in runtime. 使Unity开发的游戏支持热更新的解决方案。
   - [BDFramework](https://github.com/yimengfan/BDFramework.Core) - Simple and powerful Unity3d game workflow! 简单、高效、高度工业化的商业级unity3d 工作流。
   - [MVI4Unity](https://github.com/Wilson403/MVI4Unity) - 基于MVI架构思想实现的Unity界面框架
