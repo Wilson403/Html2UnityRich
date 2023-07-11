@@ -1,4 +1,6 @@
-﻿namespace Html2UnityRich
+﻿using System.Text.RegularExpressions;
+
+namespace Html2UnityRich
 {
     public static class Html2UnityRichMgr
     {
@@ -14,6 +16,7 @@
         /// <returns></returns>
         public static HtmlNode CreateHtmlRootNode (string str)
         {
+            str = Regex.Replace (str , "<head>.*?</head>" , string.Empty , RegexOptions.Singleline);
             char [] charArray = str.ToCharArray ();
             HtmlMachine machine = new HtmlMachine ();
             for ( int i = 0 ; i < charArray.Length ; i++ )
